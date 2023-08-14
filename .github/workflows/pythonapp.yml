@@ -23,6 +23,6 @@ jobs:
     - name: Build & Push Image
       run: |
         cd ./python
-        docker login --username=straitgategenesis --password=${{ secrets.DOCKERPW }}
+        echo "${{ secrets.DOCKERPW }}" | docker login -u "straitgategenesis" --password-stdin
         docker image build -t straitgategenesis/gitops:hellov1.0 .
         docker push straitgategenesis/gitops:hellov1.0
